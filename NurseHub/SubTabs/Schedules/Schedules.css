@@ -17,13 +17,13 @@
 body {
     font-family: 'Glacial Indifference', sans-serif;
     margin: 0;
-    /* Existing background - you can change this if you prefer my gradient */
     background-image: linear-gradient(to bottom, white, #b81e63);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align content to the start (top) of the main axis */
+    align-items: center; /* Keep content horizontally centered */
     min-height: 100vh;
-    padding-top: 20px;
+    /* Removed padding-top here in previous steps; keeping it removed */
 }
 
 .background {
@@ -39,13 +39,16 @@ body {
     z-index: -1;
 }
 
-.header-container {
+.top-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
     width: 90%;
     max-width: 700px;
+    /* This margin will now correctly push it down from the top of the body's content area,
+       and clear the fixed header. Adjust '150px' as needed. */
+    margin: 20px auto;
 }
 
 .logo-container {
@@ -73,12 +76,92 @@ body {
     width: auto;
 }
 
-.Learning-Materials-Icon,
-.Document-Icon,
+.header {
+    position: fixed;
+    top: 0;
+    left: 12%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: blanchedalmond; /* Changed from #f0f8ff */
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 1px solid #2e7d32; /* Changed from 2px solid #90ee90 */
+    box-sizing: border-box;
+    width: fit-content;
+    font-size: 1.2em;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.Hamburger-Icon,
 .Schedule-Icon,
+.Document-Icon,
+.Learning-Modules-Icon {
+    width: 50px; /* Changed from 100px */
+    height: 50px; /* Changed from 100px */
+    padding: 10px;
+    border-radius: 25px; /* Matches the new size for 50px */
+    background-color: blanchedalmond; /* Changed from #f0f8ff */
+    cursor: pointer;
+}
+
 .Hamburger-Icon {
-    height: 24px;
-    width: 24px;
+     border: 1px solid #2e7d32;
+}
+
+
+.hidden-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    /* top calculation might need slight adjustment if header size changed significantly */
+    top: 123px; /* Position below the header */
+    left: 0;
+    background-color: blanchedalmond; /* Changed from #f0f8ff */
+    border: 1px solid #2e7d32; /* Changed from 2px solid #90ee90 */
+    border-radius: 25px;
+    padding: 10px;
+    z-index: 1;
+    min-width: 200px;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
+.hidden-nav.show {
+    display: flex;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    border-radius: 25px;
+    color: #b81e63;
+    text-decoration: none;
+    border: 1px solid #2e7d32; /* Changed from 1px solid #2d9900 */
+    margin: 2px 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: blanchedalmond;
+}
+
+.nav-item:hover {
+    background-color: #f7eecc;
+}
+
+.nav-icon {
+    height: 100px; /* Remains 100px */
+    width: 100px; /* Remains 100px */
     vertical-align: middle;
 }
 
@@ -90,7 +173,7 @@ body {
     border: 2px solid #2e7d32;
     width: 90%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 20px auto; /* Keeps horizontal centering and vertical spacing */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -106,7 +189,7 @@ body {
 
 .calendar-title {
     /* Modified title style */
-    background-color: #fef9e5; /* Pink background */
+    background-color: blanchedalmond; /* Changed from #fef9e5 */
     color: #b81e63;
     padding: 10px 20px;
     border-radius: 25px;
@@ -132,13 +215,13 @@ body {
     color: #424242; /* Text color (may not be visible if only using images) */
     border: none; /* Remove button border */
     border-radius: 50%; /* Make circular */
-    width: 100px; /* Adjusted width */
-    height: 100px; /* Adjusted height */
+    width: 120px; /* Increased size */
+    height: 120px; /* Increased size */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 1.2em; /* For potential fallback text */
+    font-size: 1.5em; /* Increased font size */
     padding: 0; /* Remove padding */
     transition: background-color 0.2s ease;
 }
@@ -148,8 +231,8 @@ body {
 }
 
 .month-navigation button img {
-    max-width: 80%; /* Ensure image fits within the button */
-    max-height: 80%;
+    max-width: 90%; /* Ensure image fits within the larger button */
+    max-height: 90%;
     vertical-align: middle; /* Vertically align the image */
 }
 
@@ -282,6 +365,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 20px; /* Added margin for spacing */
 }
 
 .add-note-header {
@@ -347,12 +431,61 @@ body {
     margin-right: 8px;
 }
 
-.add-note-input,
+.add-note-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #b81e63;
+    background-color: #ffe0ed; /* Light pink */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Added padding for better appearance */
+}
+
 .add-file-input {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
+    color: #b81e63;
+    background-color: #ffe0ed; /* Light pink */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Added padding for better appearance */
+    align-items: center; /* Align items vertically in the middle */
 }
+
+/* Style for the custom "Choose File" button (label) */
+.custom-file-upload {
+    background-color: #b81e63; /* Pink background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block; /* Allows padding and other box model properties */
+    text-align: center;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.custom-file-upload:hover {
+    background-color: #961751;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.file-name-display {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #555;
+    font-size: 0.9em;
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Keep text on a single line */
+}
+
 
 .add-note-input textarea {
     flex-grow: 1;
@@ -369,15 +502,17 @@ body {
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 8px; /* Changed from 4px to 8px for more prominent rounded corners */
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow to transition */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added a subtle shadow */
 }
 
 .add-note-input button:hover,
 .add-file-input button:hover {
     background-color: #961751;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
 
 .note-display h4,
@@ -427,8 +562,6 @@ body {
 }
 
 .month-navigation button img {
-    height: 24px;
-    width: 24px;
     vertical-align: middle;
 }
 
@@ -542,4 +675,65 @@ body {
 .schedule-input textarea {
     resize: vertical;
     min-height: 60px;
+}
+
+/* Custom Modal Styles */
+.custom-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-message {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.modal-ok-button {
+    background-color: #b81e63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.modal-ok-button:hover {
+    background-color: #961751;
 }

@@ -1,295 +1,422 @@
-/* Documents.css */
-@font-face {
-    font-family: 'Glacial Indifference';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Glacial Indifference'), url('https://fonts.cdnfonts.com/s/31913/GlacialIndifference-Regular.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Glacial Indifference';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Glacial Indifference'), url('https://fonts.cdnfonts.com/s/31913/GlacialIndifference-Bold.woff') format('woff');
-}
-
-body {
-    font-family: 'Glacial Indifference', sans-serif;
-    margin: 0;
-    background: linear-gradient(to bottom, #ffffff, #b81e63);
-    /* Ensure pink background on the body */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../Images/images01.jpg');
-    /* Adjust path as needed */
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
-    z-index: -1;
-    /* Place behind other content */
-}
-
-header {
-    position: fixed;
-    top: 0;
-    /* Align to top */
-    left: 50%;
-    /* Start at the horizontal center */
-    transform: translateX(-15%);
-    /* Shift back by half width to truly center */
-    z-index: 2;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-}
-
-header>div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-}
-
-.Hamburger-Icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    background-color: blanchedalmond;
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #2d9900;
-}
-.Learning-Modules-Icon,
-.Document-Icon,
-.Schedule-Icon {
-    height: 24px;
-    width: 24px;
-    vertical-align: middle;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: blanchedalmond;
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #2d9900;
-    color: #b81e63;
-    width: 200px;
-}
-
-.document-sidebar-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the start (left) */
-    gap: 10px;
-    height: auto; /* Adjust height to content */
-    width: 350px; /* Fixed width for the sidebar */
-    overflow-y: auto; /* Enable scrolling if needed */
-    box-sizing: border-box; /* Include padding and border in width */
-}
-
-.document-sidebar-container {
-    position: absolute;
-    left: 0;
-    top: 0; /* Initial top position */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    width: 25%;
-    min-width: 100px;
-    box-sizing: border-box;
-    height: auto; /* Or a fixed height if you prefer */
-    overflow-y: auto;
-}
-
-.main-content {
-    margin-left: 220px; /* Adjust margin to accommodate sidebar width */
-    /* Other styles for your main content */
-}
-
-.first-sem, .second-sem, .first-sem-docx, .second-sem-docx {
-    background-color: blanchedalmond; /* Light background for links */
-    color: #b81e63; /* Text color for links */
-    padding: 8px 15px;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border: 1px solid #2d9900;
-    margin: 5px 0;
-    box-sizing: border-box;
-    text-align: left;
-    cursor: pointer; /* Indicate interactivity */
-    transform: translateX(-10px); /* Slight left shift */
-    padding-left: 25px;
-}
-
-.first-sem:hover, .second-sem:hover, .first-sem-docx:hover , .second-sem-docx:hover {
-    background-color: #f7eecc; /* Lighter background on hover */
-    transform: translateX(0px); /* Slight lift effect */
-}
-
-.container {
-    width: calc(90% - 250px);
-    /* Adjusted width, 200px for sidebar + some extra */
-    max-width: 600px;
-    margin-left: 250px;
-    /* Add left margin to avoid overlap with sidebar */
-    margin-top: 80px;
-    /* Add top margin to avoid overlap with header */
-    margin-bottom: 20px;
-    border-radius: 25px;
-    overflow: hidden;
-    position: relative;
-    /* Needed for z-index context */
-    z-index: 0;
-    /* Ensure container is above the background */
-    gap: 20px;
-}
-
-.top-bar {
-    background-color: #e0f2f7;
-    /* Light blue/green top bar */
-    color: #2e7d32;
-    /* Dark green text */
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-button,
-.scroll-button {
-    background: none;
-    border: none;
-    color: #2e7d32;
-    font-size: 1.5em;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.top-bar h1 {
-    font-size: 1.8em;
-    margin: 0;
-}
-
-.document-list {
-    padding: 20px;
-}
-
-.document-card {
-    border: 1px solid #2e7d32;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #fef9e5;
-    transition: background-color 0.3s ease;
-}
-
-.document-card:hover {
-    background-color: #f0f0f0;
-}
-
-.card-header {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.card-header h2 {
-    font-size: 1.2em;
-    margin: 0;
-    color: #333;
-}
-
-.document-preview {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.document-preview img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    /* Prevent extra space below image */
-}
-
-.document-preview .no-preview {
-    color: #777;
-}
-
-.card-body p {
-    color: #333;
-    font-size: 0.9em;
-    margin-bottom: 5px;
-}
-
-.card-body a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.card-body a:hover {
-    text-decoration: underline;
-}
-
-.text-container {
-    margin-top: 10px;
-    /* Add some spacing between preview and text */
-}
-
-.short-text {
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    margin-bottom: 5px;
-    font-size: 0.9em;
-    /* Adjust font size as needed */
-    color: #555;
-    /* Adjust text color as needed */
-}
-
-.full-text {
-    display: none;
-    /* Initially hide the full text */
-    font-size: 0.9em;
-    color: #555;
-}
-
-.read-more-button {
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    padding: 0;
-    font-size: 0.9em;
-}
-
-.read-more-button:hover {
-    text-decoration: underline;
-}
-
-.expanded .short-text {
-    display: none;
-}
-
-.expanded .full-text {
-    display: block;
-}
+        /* Documents.css */
+        @font-face {
+            font-family: 'Glacial Indifference';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Glacial Indifference'), url('https://fonts.cdnfonts.com/s/31913/GlacialIndifference-Regular.woff') format('woff');
+        }
+        
+        @font-face {
+            font-family: 'Glacial Indifference';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Glacial Indifference'), url('https://fonts.cdnfonts.com/s/31913/GlacialIndifference-Bold.woff') format('woff');
+        }
+        
+        body {
+            font-family: 'Glacial Indifference', sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom, #ffffff, #b81e63);
+            min-height: 100vh;
+            display: flex; /* Changed to flex to center content */
+            flex-direction: column; /* Stack header and main content vertically */
+            align-items: center; /* Center content horizontally */
+            position: relative; /* For background z-index */
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../../Images/images01.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 12%;
+            transform: translateX(-50%); /* Corrected for true centering */
+            z-index: 2;
+            display: flex;
+            flex-direction: row; /* Ensure inline layout */
+            align-items: center;
+            justify-content: center; /* Center content within header */
+            gap: 10px;
+            padding: 10px 20px; /* Adjusted padding */
+            background-color: blanchedalmond; /* Added background for visibility */
+            border-bottom-left-radius: 25px; /* Rounded bottom corners */
+            border-bottom-right-radius: 25px;
+            border: 1px solid #2d9900; /* Added border */
+            box-sizing: border-box; /* Include padding and border in width */
+            width: fit-content; /* Adjust width to content */
+        }
+        
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #b81e63;
+            width: fit-content;
+        }
+        
+        .Hamburger-Icon {
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #2d9900;
+            background-color: blanchedalmond;
+            cursor: pointer;
+        }
+        
+        .Document-Icon,
+        .Schedule-Icon,
+        .Learning-Modules-Icon {
+            height: 50px; /* Consistent icon size */
+            width: 50px;
+            vertical-align: middle;
+        }
+        
+        .header .Learning-Materials-Title {
+            font-size: 1.2em;
+            margin: 0;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        
+        .header .hidden-nav {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            position: absolute; /* Position relative to header */
+            top: 100%; /* Position below the header */
+            left: 0;
+            background-color: blanchedalmond;
+            border: 1px solid #2d9900;
+            border-radius: 25px;
+            padding: 10px;
+            z-index: 1; /* Below the main header, but above content */
+            min-width: 200px; /* Ensure dropdown has a minimum width */
+            box-sizing: border-box;
+            align-items: flex-start; /* Align links to the left */
+        }
+        
+        .header .hidden-nav.show {
+            display: flex; /* Show when 'show' class is added */
+        }
+        
+        .header .hidden-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            border-radius: 25px;
+            color: #b81e63;
+            text-decoration: none;
+            border: 1px solid #2d9900;
+            margin: 2px 0;
+            width: 100%; /* Make links fill dropdown width */
+            box-sizing: border-box;
+            background-color: blanchedalmond;
+        }
+        
+        .header .hidden-nav a:hover {
+            background-color: #f7eecc;
+        }
+        
+        /* New wrapper for the main content area to allow it to be centered */
+        .page-content-wrapper {
+            width: 100%;
+            max-width: 1200px; /* Overall max width for the main content area */
+            box-sizing: border-box;
+            flex-grow: 1; /* Allows it to take up vertical space */
+            padding-top: 80px; /* Initial space for header, adjusted by JS */
+            /* No display: flex here anymore, as sidebar is fixed */
+            /* This wrapper now acts as the main content block that gets centered by the body */
+        }
+        
+        /* Sidebar Styling - Now always fixed */
+        .document-sidebar-container {
+            position: fixed; /* Changed from absolute to fixed */
+            left: -10px; /* Pushed slightly off-screen to the left */
+            width: 220px;
+            height: calc(100vh - 80px); /* Initial height, adjusted by JS */
+            top: 80px; /* Initial top, adjusted by JS */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding-top: 20px;
+            scrollbar-width: none;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        
+        .first-sem, .second-sem {
+            font-weight: bold;
+            color: #b81e63;
+            padding: 10px 15px;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border: 1px solid #2d9900;
+            background-color: blanchedalmond;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            text-align: left;
+            transform: translateX(-10px);
+            padding-left: 25px;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Added transition */
+        }
+        .first-sem:hover, .second-sem:hover { /* Re-added hover effect */
+            background-color: #ffa5cd;
+            transform: translateX(0px);
+        }
+        
+        .document-sidebar {
+            display: flex; /* Initially hidden, toggled by JS */
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 10px; /* Indent for sub-items */
+        }
+        
+        .document-sidebar.show {
+            display: flex;
+        }
+        
+        .first-sem-docx, .second-sem-docx {
+            background-color: blanchedalmond;
+            color: #b81e63;
+            padding: 8px 15px;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border: 1px solid #2d9900;
+            margin: 2px 0;
+            box-sizing: border-box;
+            text-align: left;
+            cursor: pointer;
+            transform: translateX(-10px);
+            padding-left: 35px; /* Further indent for doc links */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Added transition */
+        }
+        
+        .first-sem-docx:hover, .second-sem-docx:hover { /* Re-added hover effect */
+            background-color: #ffa5cd;
+            transform: translateX(0px);
+        }
+        
+        /* Removed active highlight for .first-sem-docx, .second-sem-docx as requested previously */
+        /* .first-sem-docx.active, .second-sem-docx.active {
+        background-color: #ffe0ed;
+        font-weight: bold;
+        } */
+        
+        /* Main Content Area Wrapper - Now directly centered within page-content-wrapper */
+        .main-content-area {
+            margin: 0 auto; /* Center horizontally within its parent (page-content-wrapper) */
+            width: calc(100% - 220px - 30px); /* Calculate width to leave space for sidebar + gap */
+            max-width: 900px; /* Max width for the actual content */
+            box-sizing: border-box;
+            padding: 20px;
+            overflow-y: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center document cards horizontally */
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .main-content-area::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* The .container is now just a wrapper for document-list */
+        .container {
+            width: 100%; /* Make it fill main-content-area */
+            padding: 0; /* Remove padding if main-content-area has it */
+            margin: 0; /* Remove margins */
+        }
+        
+        .document-list {
+            padding: 0; /* Remove default padding */
+            width: 100%; /* Fill the container */
+            display: flex; /* Make document-list a flex container */
+            flex-direction: column; /* Stack sections vertically */
+            gap: 20px; /* Apply gap between sections (your document cards) */
+        }
+        
+        .document-card {
+            border: 1px solid #2d9900; /* Consistent border color */
+            border-radius: 15px;
+            margin-bottom: 0; /* Ensure no extra margin, gap handles it */
+            padding: 15px;
+            background-color: #fef9e5;
+            transition: background-color 0.3s ease;
+            cursor: pointer; /* Indicate entire card is clickable */
+            width: 100%; /* Make card fill its parent */
+            box-sizing: border-box;
+        }
+        
+        .document-card:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .card-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .card-header h2 {
+            font-size: 1.2em;
+            margin: 0;
+            color: #333;
+        }
+        
+        .document-preview {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .document-preview img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .document-preview .no-preview {
+            color: #777;
+        }
+        
+        .text-container {
+            margin-top: 10px;
+        }
+        
+        .short-text {
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        .full-text {
+            display: none;
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        .read-more-button {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            padding: 0;
+            font-size: 0.9em;
+        }
+        
+        .read-more-button:hover {
+            text-decoration: underline;
+        }
+        
+        .expanded .short-text {
+            display: none;
+        }
+        
+        .expanded .full-text {
+            display: block;
+        }
+        
+        .document-sidebar div {
+            /* Existing styles for sidebar items */
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            /* Add any other default styles */
+            color: #424242; /* Example default text color */
+        }
+        
+        .document-sidebar div:hover {
+            background-color: #e0e0e0; /* Example hover effect */
+        }
+        
+        .document-sidebar div.active {
+            background-color: #b81e63; /* Highlight color for active item */
+            color: white; /* Text color for active item */
+            font-weight: bold;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+                width: 95%; /* Take more width on small screens */
+                transform: translateX(-50%); /* Ensure centering */
+            }
+            .header .logo-container {
+                flex-direction: row; /* Keep logo and title inline */
+                gap: 10px;
+                padding: 5px 10px;
+            }
+            .Hamburger-Icon {
+                margin-bottom: 0; /* No margin below hamburger */
+                margin-right: 10px; /* Add some space to the right */
+            }
+            .header .hidden-nav {
+                position: static; /* Allow it to flow naturally below header */
+                width: 100%;
+                margin-top: 10px;
+                border: none; /* Remove border if it looks bad stacked */
+                box-shadow: none; /* Remove shadow */
+                align-items: center; /* Center nav items */
+            }
+            .header .hidden-nav a {
+                width: 90%; /* Make links fill most of the width */
+            }
+            
+            .page-content-wrapper {
+                flex-direction: column; /* Stack sidebar and main content vertically */
+                padding-top: 20px; /* Space from header */
+            }
+            
+            .document-sidebar-container {
+                position: static; /* No longer fixed */
+                left: auto; /* Reset left */
+                width: 100%; /* Take full width */
+                height: auto; /* Height adjusts to content */
+                overflow-y: visible; /* No internal scrollbar */
+                padding: 10px;
+                border-right: none; /* Remove border */
+                background-color: transparent; /* Transparent background */
+                margin-top: 0; /* No extra top margin */
+                top: auto; /* Reset top */
+            }
+            .document-sidebar {
+                padding-left: 0;
+            }
+            .first-sem, .second-sem, .first-sem-docx, .second-sem-docx {
+                transform: translateX(0); /* Remove transform on small screens */
+                border-radius: 15px; /* Adjust border radius */
+                padding-left: 15px; /* Adjust padding */
+                width: 95%; /* Take most of the width */
+                margin: 5px auto; /* Center items */
+            }
+            .main-content-area {
+                margin-left: 0; /* No left margin on small screens */
+                margin-top: 20px; /* Space from sidebar */
+                width: 95%; /* Take most of the width */
+                padding: 10px;
+            }
+            .container {
+                width: 100%; /* Ensure container fills its parent */
+            }
+        }

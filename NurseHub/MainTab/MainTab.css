@@ -71,31 +71,6 @@ body {
     width: auto;
 }
 
-.semester-buttons {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 5px;
-    width: 80%;
-    align-self: center;
-}
-
-.sidebar-button {
-    padding: 10px;
-    background-color: #fef9e5;
-    border: 2px solid #b81e63;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    font-family: 'Glacial Indifference', sans-serif;
-    text-align: center;
-    color: #b81e63;
-}
-
-.sidebar-button:hover {
-    background-color: #e0e0e0;
-}
-
 main {
     width: 100%;
     display: flex;
@@ -133,6 +108,7 @@ main {
     transition: background-color 0.3s ease;
     border: 2px solid #b81e63;
     font-family: 'Glacial Indifference', sans-serif;
+    justify-content: flex-start; /* Align icon and text to the start */
 }
 
 .dashboard-button:hover {
@@ -148,31 +124,59 @@ main {
     height: 36px;
 }
 
-.document-row {
-    display: none;
-    width: 90%;
-    max-width: 500px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
-    white-space: nowrap;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-family: 'Glacial Indifference';
+/* Removed .document-row, .document-link as they are not used in the current HTML */
+
+.dropdown {
+    position: relative;
+    width: 100%; /* Make dropdown take full width of its parent */
 }
 
-.document-link {
-    display: inline-block;
-    padding: 12px;
-    background-color: #e0f7fa;
-    border: 1px solid #b2ebf2;
-    border-radius: 5px;
+.dropdown-toggle {
+    /* Inherits dashboard-button styles, but ensure it behaves like a button */
+    width: 100%;
+    cursor: pointer;
+    text-align: left; /* Align text to the left within the button */
+    border: 2px solid #b81e63; /* Ensure border is consistent */
+}
+
+.dropdown-content {
+    /* Initial state for animation */
+    display: block; /* Keep display block for transition, but control visibility with max-height/opacity */
+    max-height: 0; /* Start with no height */
+    opacity: 0; /* Start fully transparent */
+    overflow: hidden; /* Hide content overflow during transition */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition for height and opacity */
+
+    position: absolute;
+    background-color: #fef9e5; /* Match dashboard button background */
+    min-width: 100%; /* Take full width of the dropdown parent */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10; /* Ensure it appears above other content */
+    border-radius: 15px; /* Rounded corners for dropdown content */
+    margin-top: 5px; /* Small gap between button and dropdown */
+    border: 2px solid #b81e63; /* Consistent border */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    padding: 0 0; /* Start with no padding to animate it in */
+    
+}
+
+.dropdown-content a {
+    color: #b81e63; /* Match dashboard button text color */
+    padding: 12px 15px;
     text-decoration: none;
-    color: #2e7d32;
-    font-size: 0.9em;
+    display: block;
     font-family: 'Glacial Indifference', sans-serif;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
 }
 
-.document-link:hover {
-    background-color: #b2dfdb;
+.dropdown-content a:hover {
+    background-color: #ffe0ed; /* Match dashboard button hover */
 }
+
+.dropdown-content.show {
+    max-height: 500px; /* Animate to a sufficiently large height */
+    opacity: 1; /* Animate to fully opaque */
+    padding: 10px 0; /* Animate padding in */
+}
+
