@@ -1,4 +1,4 @@
-/* Schedules.css */
+ /* Schedules.css */
 
 @font-face {
     font-family: 'Glacial Indifference';
@@ -736,4 +736,40 @@ body {
 
 .modal-ok-button:hover {
     background-color: #961751;
+}
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+                left: 15%;
+                transform: translateX(-50%); /* Ensure centering */
+            }
+            .header .logo-container {
+                flex-direction: column; /* Changed from row to column to stack items */
+                gap: 5px; /* Adjust gap for vertical stacking */
+                padding: 5px 10px;
+                width: 100%; /* Ensure it takes full width within the header */
+            }
+            .Hamburger-Icon {
+                margin-bottom: 0; /* No margin below hamburger */
+                margin-right: 10px; /* Add some space to the right */
+            }
+            
+            .header .hidden-nav {
+                position: static; /* Allow it to flow naturally below header */
+                width: 100%;
+                margin-top: 10px;
+                border: none; /* Remove border if it looks bad stacked */
+                box-shadow: none; /* Remove shadow */
+                align-items: center; /* Center nav items */
+            }
+            .header .hidden-nav a {
+                width: 90%; /* Make links fill most of the width */
+            }
+            
+            .page-content-wrapper {
+                flex-direction: column; /* Stack sidebar and main content vertically */
+                padding-top: 180px; /* Increased padding-top to clear the fixed header */
+            }
 }

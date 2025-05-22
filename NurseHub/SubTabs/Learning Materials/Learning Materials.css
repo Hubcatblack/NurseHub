@@ -1,4 +1,4 @@
-@font-face {
+  @font-face {
     font-family: 'Glacial Indifference';
     font-style: normal;
     font-weight: 400;
@@ -289,4 +289,73 @@ main {
 
 .onclick-text {
     display: none;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack hamburger and logo-container */
+        padding: 10px;
+        left: 50%; /* Center header horizontally */
+        transform: translateX(-50%); /* Adjust for true centering */
+        width: 90%; /* Allow header to take more width */
+        max-width: 300px; /* Limit max width for header */
+    }
+
+    .header .logo-container {
+        flex-direction: column; /* Stack "Learning Materials" and "hidden-nav" */
+        gap: 5px;
+        width: 100%; /* Ensure it takes full width within the header */
+    }
+
+    .Hamburger-Icon {
+        margin-bottom: 10px; /* Add space below hamburger icon */
+    }
+
+    .header .hidden-nav {
+        position: static; /* Allow it to flow naturally in the column layout */
+        width: 100%; /* Take full width of its parent */
+        margin-top: 10px; /* Add space above the hidden nav */
+        border: none; /* Remove border if it looks odd when stacked */
+        box-shadow: none; /* Remove shadow */
+        align-items: center; /* Center the links within the hidden nav */
+        padding: 0; /* Remove padding if it causes extra space */
+    }
+
+    .header .hidden-nav a {
+        width: 90%; /* Make links fill most of the width */
+        margin: 5px 0; /* Adjust vertical margin for stacked links */
+    }
+
+    main {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+        transform: translateY(180px); /* Adjust content down to clear fixed header */
+    }
+
+    .Learning-Materials-List {
+        width: 100%; /* Sidebar takes full width */
+        align-items: center; /* Center items in the sidebar */
+        padding-left: 0; /* Remove left padding */
+    }
+
+    .semester-title,
+    .subject {
+        width: 90%; /* Make semester titles and subjects wider */
+        transform: translateX(0); /* Remove horizontal translation */
+        margin-right: 0; /* Remove right margin */
+        text-align: center; /* Center text */
+        border-radius: 25px; /* Apply full border-radius */
+        border-left-color: #2d9900; /* Ensure left border is visible */
+    }
+
+    .Learning-Materials-Main {
+        width: 90%; /* Main content takes more width */
+        margin-left: 0; /* Remove left margin */
+        margin-top: 20px; /* Adjust top margin for spacing */
+    }
+
+    .First-Semester-Main,
+    .Second-Semester-Main {
+        width: 90%; /* Subject content takes more width */
+    }
 }

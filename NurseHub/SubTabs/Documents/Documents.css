@@ -1,4 +1,4 @@
-        /* Documents.css */
+ /* Documents.css */
         @font-face {
             font-family: 'Glacial Indifference';
             font-style: normal;
@@ -152,7 +152,7 @@
             gap: 10px;
             overflow-y: auto;
             box-sizing: border-box;
-            padding-top: 20px;
+            padding-top: 50px; /* Adjusted to lower content from the top */
             scrollbar-width: none;
             z-index: 1;
             flex-shrink: 0;
@@ -181,7 +181,7 @@
         }
         
         .document-sidebar {
-            display: flex; /* Initially hidden, toggled by JS */
+            display: none; /* Changed to none to hide by default */
             flex-direction: column;
             width: 100%;
             box-sizing: border-box;
@@ -189,7 +189,7 @@
         }
         
         .document-sidebar.show {
-            display: flex;
+            display: flex; /* Show when 'show' class is added */
         }
         
         .first-sem-docx, .second-sem-docx {
@@ -359,7 +359,7 @@
             .header {
                 flex-direction: column;
                 padding: 10px;
-                width: 95%; /* Take more width on small screens */
+                left: 13%;
                 transform: translateX(-50%); /* Ensure centering */
             }
             .header .logo-container {
@@ -371,6 +371,7 @@
                 margin-bottom: 0; /* No margin below hamburger */
                 margin-right: 10px; /* Add some space to the right */
             }
+
             .header .hidden-nav {
                 position: static; /* Allow it to flow naturally below header */
                 width: 100%;
@@ -385,20 +386,20 @@
             
             .page-content-wrapper {
                 flex-direction: column; /* Stack sidebar and main content vertically */
-                padding-top: 20px; /* Space from header */
+                padding-top: 180px; /* Increased padding-top to clear the fixed header */
             }
             
             .document-sidebar-container {
-                position: static; /* No longer fixed */
-                left: auto; /* Reset left */
+                position: fixed; /* No longer fixed */
+                left: -20px; /* Align to left */
                 width: 100%; /* Take full width */
                 height: auto; /* Height adjusts to content */
                 overflow-y: visible; /* No internal scrollbar */
                 padding: 10px;
                 border-right: none; /* Remove border */
                 background-color: transparent; /* Transparent background */
-                margin-top: 0; /* No extra top margin */
-                top: auto; /* Reset top */
+                margin-top: 0; /* Removed margin-top as padding-top on wrapper handles spacing */
+                top: auto;
             }
             .document-sidebar {
                 padding-left: 0;
